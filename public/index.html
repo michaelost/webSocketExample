@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+window.onload = function(){
+	console.log('javascript works');
+
+	if('WebSocket' in window){
+		console.log('browser support WebSockets');
+	}
+	var connection = new WebSocket('ws://localhost:8080');
+
+	connection.onopen = function(){
+		console.log('connection established');
+		connection.send('hello there');
+	}
+
+	connection.onmessage = function(e){
+		console.log(e.data);
+	}
+
+
+}
+	
+</script>
+	
+</body>
+</html>
